@@ -64,28 +64,39 @@ Es la primera app que desarrollo desde 0, sé que me falta mucho por aprender y 
 
 ## Imágenes de la app pues
 
-1. Pantalla principal
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
 
-![](./img/home-screen.png)
+  <div>
+    <img src="./img/home-screen.png" alt="Pantalla principal" width="300"/>
+    <p>Pantalla principal</p>
+  </div>
 
-2. Pantalla para buscar clientes
+  <div>
+    <img src="./img/buscador.png" alt="Pantalla para buscar clientes" width="300"/>
+    <p>Pantalla para buscar clientes</p>
+  </div>
 
-![](./img/buscador.png)
+  <div>
+    <img src="./img/agregar-cliente.png" alt="Pantalla para agregar clientes" width="300"/>
+    <p>Pantalla para agregar clientes</p>
+  </div>
 
-3. Pantalla para agregar clientes
+  <div>
+    <img src="./img/login-con-google.png" alt="Pantalla de login con google" width="300"/>
+    <p>Pantalla de login con google</p>
+  </div>
 
-![](./img/agregar-cliente.png)
+  <div>
+    <img src="./img/pantalla-del-usuario.png" alt="Pantalla del usuario" width="300"/>
+    <p>Pantalla del usuario</p>
+  </div>
 
-4. Pantalla de login con google
+  <div>
+    <img src="./img/pantalla-usuario-nataly.png" alt="Pantalla de los clientes" width="300"/>
+    <p>Pantalla de los clientes</p>
+  </div>
 
-![](./img/login-con-google.png)
+</div>
 
-5. Pantalla del usuario
-
-![](./img/pantalla-del-usuario.png)
-
-6. Pantalla de los clientes
-
-![](./img/pantalla-usuario-nataly.png)
 
 # Si bueno a dormir

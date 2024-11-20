@@ -13,16 +13,18 @@ export default function ClientsSummary({ totalDebt, clientsWithDebt }: ClientsSu
         <>
         <View style={styles.debtSummary}>
             <View style={styles.iconRow}>
-                <FontAwesome name="money" size={24} color="#000" />
+                <FontAwesome name="money" size={20} color="#000" />
                 <Text style={styles.debtTotalLabel}>Deuda Total:</Text>
             </View>
             <Text style={styles.debtTotalAmount}>${formattedDebt}</Text>
             <View style={styles.iconRow}>
-                <FontAwesome name="users" size={24} color="#000" />
-                <Text style={styles.clientsWithDebt}>Clientes con Deuda: {clientsWithDebt}</Text>
+                <FontAwesome name="users" size={20} color="#000" />
+                <Text style={styles.clientsWithDebt}>Clientes con deuda: {clientsWithDebt}</Text>
             </View>
         </View>
-        <Text style={styles.separatorText}>Clientes con más deuda</Text>
+        { formattedDebt !== '0' &&
+                <Text style={styles.separatorText}>Clientes con más deuda</Text>
+        }
         </>
     );
 };

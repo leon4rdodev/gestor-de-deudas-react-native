@@ -97,8 +97,8 @@ export default function UserDataScreen({ route, navigation }: Props) {
     const handleDeleteClient = () => {
         if (client.debt === 0) {
             Alert.alert(
-                'Confirmar Eliminación',
-                '¿Estás seguro de que deseas eliminar este cliente? \n\nEsta acción no se puede revertir.',
+                'Confirmar eliminación',
+                '¿Estás seguro de que deseas eliminar a este cliente? \n\nEsta acción no se puede revertir.',
                 [
                     { text: 'Eliminar', style: 'destructive', onPress: () => deleteClient(client.id) },
                     { text: 'Cancelar', style: 'cancel' }
@@ -109,8 +109,8 @@ export default function UserDataScreen({ route, navigation }: Props) {
         }
 
         Alert.alert(
-            'Este cliente tiene deudas pendientes',
-            'No se puede eliminar este cliente debido a que tiene deudas pendientes, intentalo nuevamente cuando el cliente salde su deuda por completo.'
+            'Hay deudas pendientes',
+            'No se puede eliminar este cliente debido a que tiene deudas pendientes. \n\nIntentalo nuevamente cuando el cliente salde su deuda por completo.'
         );
     };
 

@@ -108,7 +108,7 @@ export default function HomeScreen({ navigation }: Props) {
                         <ClientsSummary clientsWithDebt={clientsWithDebt.length} totalDebt={totalDebt} />
                     ) : null
                 }
-                ListEmptyComponent={<Text style={styles.clientNotFound}>No hay clientes</Text>}
+                ListEmptyComponent={<Text style={styles.clientNotFound}>No hay clientes para mostrar.</Text>}
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={styles.listContent}
                 keyboardShouldPersistTaps="always"

@@ -206,7 +206,6 @@ export const useAuth = (config: GoogleAuthConfig) => {
                 ).toISOString()
             );
 
-            // console.log('Token refrescado:', tokenResult.accessToken, 'Expira en:', expiresIn);
             setAccessToken(tokenResult.accessToken);
             setUserInfo(user);
         } catch (error) {

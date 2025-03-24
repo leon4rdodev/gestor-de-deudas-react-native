@@ -7,7 +7,7 @@ import { RootStackParamList } from '../types/RootStackParamList';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { Client, Transaction } from '../types/types';
+import { Client } from '../types/types';
 
 
 type Props = NativeStackScreenProps<RootStackParamList, 'UserDataScreen'>;
@@ -100,8 +100,8 @@ export default function UserDataScreen({ route, navigation }: Props) {
                 'Confirmar eliminación',
                 '¿Estás seguro de que deseas eliminar a este cliente? \n\nEsta acción no se puede revertir.',
                 [
-                    { text: 'Eliminar', style: 'destructive', onPress: () => deleteClient(client.id) },
-                    { text: 'Cancelar', style: 'cancel' }
+                    { text: 'Cancelar', style: 'cancel' },
+                    { text: 'Eliminar', style: 'destructive', onPress: () => deleteClient(client.id) }
                 ]
             );
 
@@ -128,11 +128,38 @@ export default function UserDataScreen({ route, navigation }: Props) {
             'Confirmar Eliminación',
             '¿Estás seguro de que deseas eliminar esta transacción? \n\nEsta acción no se puede revertir.',
             [
-                { text: 'Eliminar', style: 'destructive', onPress: () => deleteTransactionAndNotification(transaction) },
-                { text: 'Cancelar', style: 'cancel', onPress: () => { } }
+                { text: 'Cancelar', style: 'cancel', onPress: () => { } },
+                { text: 'Eliminar', style: 'destructive', onPress: () => deleteTransactionAndNotification(transaction) }
             ]
         );
     };
+
+    const deleteDebt = () => {
+        const now = new Date();
+        const formattedDate = now.toISOString();
+
+        const newTransaction = {
+            date: formattedDate,
+            amount: client.debt,
+            type: "Abono"
+        };
+
+        addTransaction(client.id, newTransaction);
+        setAmount('');
+        setNotification({ message: 'Deuda eliminada correctamente.', type: 'success' });
+    }
+
+    const handleDeleteDebt = () => {
+        if (client.debt === 0) return
+        Alert.alert(
+            'Confirmar eliminación de deuda',
+            '¿Estás seguro de que deseas eliminar la deuda de este cliente? \n\nEsta acción no se puede revertir.',
+            [
+                { text: 'Cancelar', style: 'cancel' },
+                { text: 'Aceptar', style: 'destructive', onPress: () => deleteDebt() }
+            ]
+        );
+    }
 
     return (
         <View style={{ flex: 1 }}>
@@ -194,7 +221,12 @@ export default function UserDataScreen({ route, navigation }: Props) {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.transactionHistory}>
-                    <Text style={styles.transactionTitle}>Historial de Transacciones</Text>
+                    <View style={styles.transactionsHistoryTitle}>
+                        <Text style={styles.transactionTitle}>Historial de transacciones</Text>
+                        <TouchableOpacity onPress={handleDeleteDebt}>
+                            <FontAwesome6 name="user-check" size={24} color="#222" />
+                        </TouchableOpacity>
+                    </View>
                     <FlatList
                         showsVerticalScrollIndicator={false}
                         data={client.transactions}
@@ -227,6 +259,10 @@ export default function UserDataScreen({ route, navigation }: Props) {
 }
 
 export const styles = StyleSheet.create({
+    transactionsHistoryTitle:{
+        flexDirection: 'row',
+        justifyContent: 'space-evenly'
+    },
     container: {
         flex: 1,
         paddingHorizontal: 16,
